@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Display Posts</string>
+    <string name="done_button_text">Retrieve Posts</string>
+    <string name="element_text">arbitrary text</string>
+</resources>
