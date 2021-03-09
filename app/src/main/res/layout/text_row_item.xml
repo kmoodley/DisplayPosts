@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/item_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3" />
 
     <TextView
         android:id="@+id/rvTextViewPostTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/element_text"/>
-</FrameLayout>
+        android:text="@string/element_text" />
+
+    <LinearLayout
+        android:id="@+id/sub_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/sub_item_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sub item text "
+            tools:text="Genre:  Crime, Drama, Thriller" />
+
+        <TextView
+            android:id="@+id/sub_item_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Year: 1993" />
+    </LinearLayout>
+</LinearLayout>

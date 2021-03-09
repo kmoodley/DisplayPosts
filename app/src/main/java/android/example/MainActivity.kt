@@ -10,7 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,21 +29,17 @@ class MainActivity : AppCompatActivity() {
         binding.rvPostsLists.layoutManager = linearLayoutManager
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        var recyclerView:RecyclerView = binding.rvPostsLists
+        (recyclerView.itemAnimator as SimpleItemAnimator?)!!.supportsChangeAnimations = false
+
         binding.doneButton.setOnClickListener {
             getAllPosts(it)
         }
     }
 
     private fun getAllPosts(view: View?) {
-        val dataSet = ArrayList<String>()
-
         viewModel.allPosts.observe(this, Observer {
-            for (postItem in it) {
-                var title: String = postItem.title!!
-                var postId: String = postItem.id.toString()!!
-                dataSet.add("[${postId}] - ${title}")
-            }
-            binding.rvPostsLists.adapter = PostDisplayAdapter(dataSet, view!!.context)
+            binding.rvPostsLists.adapter = PostDisplayAdapter(it, view!!.context)
         })
     }
 }

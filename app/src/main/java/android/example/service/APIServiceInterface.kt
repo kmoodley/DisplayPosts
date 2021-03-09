@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface PostServiceInterface {
+interface APIServiceInterface {
 
     @GET("posts")
     suspend fun getPosts() : List<PostModel>
@@ -18,17 +18,17 @@ interface PostServiceInterface {
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-                .build().create(PostServiceInterface::class.java)
+                .build().create(APIServiceInterface::class.java)
         }
 
-        fun create(): PostServiceInterface
+        fun create(): APIServiceInterface
         {
             var builder = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            return builder.create(PostServiceInterface::class.java)
+            return builder.create(APIServiceInterface::class.java)
         }
     }
 }
